@@ -6,7 +6,7 @@ use App\User;
 use App\Organization;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class OrganizationPolicie
+class OrganizationPolicy
 {
     use HandlesAuthorization;
     

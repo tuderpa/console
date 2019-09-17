@@ -74,7 +74,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [
-            new NovaSidebarIcons
+            new NovaSidebarIcons,
         ];
     }
 
