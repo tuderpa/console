@@ -6,6 +6,11 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Trix;
+
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Neighborhood extends Resource
@@ -46,8 +51,14 @@ class Neighborhood extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Name'),
+            Text::make('Slug')->withMeta(['extraAttributes' => ['placeholder' => 'usar-este-case-y-sin-signos']]),
             BelongsTo::make('City')->display('name'),
-            Text::make('Mapa', 'map')
+            Text::make('Mapa', 'map'),
+            Boolean::make('Destacado', 'highlighted'),
+            Image::make('Header', 'header'),
+            Number::make('Grilla (1 a 12)', 'size')->min(1)->max(12),
+            Image::make('Imagen', 'photo'),
+            Trix::make('Descripcion', 'description')
         ];
     }
 

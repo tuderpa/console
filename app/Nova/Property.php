@@ -133,8 +133,9 @@ class Property extends Resource
                 'dressing_room' => 'Vestidor',
                 'garage' => 'Cochera'
             ])->withoutTypeCasting()->hideFromIndex(),
-
-        new Panel('Detalles', $this->detailsFields()),
+            
+            Trix::make('Descripción', 'details'),
+            new Panel('Detalles', $this->detailsFields()),
             new Panel('Dirección del inmueble', $this->addressFields()),
             new Panel('Imágenes', $this->photos()),
         ];

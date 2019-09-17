@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Neighborhood;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $neighborhoods = Neighborhood::where('highlighted', 1)->with('city')->orderBy('name', 'desc')->take(5)->get();
+        return view('index', ['neighborhoods' => $neighborhoods]);
     }
 }

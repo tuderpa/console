@@ -45,6 +45,7 @@ class City extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Name'),
+            Text::make('Slug')->withMeta(['extraAttributes' => ['placeholder' => 'usar-este-case-y-sin-signos']]),
             BelongsTo::make('Country')->display('name'),
             Text::make('Mapa', 'map')
         ];
