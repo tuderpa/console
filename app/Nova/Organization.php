@@ -66,7 +66,7 @@ class Organization extends Resource
         return [
             Text::make('Nombre de la organización', 'name'),
             Trix::make('Bio', 'bio'),
-            Avatar::make('Avatar', 'Logo')
+            Avatar::make('Logo', 'logo')
 
         ];
     }
