@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -11,7 +12,6 @@ use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Trix;
 
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Neighborhood extends Resource
 {
@@ -58,7 +58,8 @@ class Neighborhood extends Resource
             Image::make('Header', 'header'),
             Number::make('Grilla (1 a 12)', 'size')->min(1)->max(12),
             Image::make('Imagen', 'photo'),
-            Trix::make('Descripcion', 'description')
+            Trix::make('Descripcion', 'description'),
+            HasMany::make('places'),
         ];
     }
 
