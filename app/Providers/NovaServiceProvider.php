@@ -2,12 +2,14 @@
 
 namespace App\Providers;
 
+use App\Role;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Cards\Help;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use EricLagarda\NovaGallery\NovaGallery;
 use Anaseqal\NovaSidebarIcons\NovaSidebarIcons;
+use Tuderpa\PropertyManagment\PropertyManagment;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -20,9 +22,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         parent::boot();
 
-        Nova::resources([
-            \DmitryBubyakin\NovaMedialibraryField\Resources\Media::class,
-        ]);
+        Nova::resources([]);
     }
 
     /**
@@ -62,7 +62,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            new Help,
+            (new PropertyManagment)->canSee(function ($request) {return $request->user()->hasRole(Role::USER);}),
         ];
     }
 
